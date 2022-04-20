@@ -1,0 +1,115 @@
+[
+  {
+    "name": "add",
+    "format": "R",
+    "fields": [
+      { "name": "opcode", "address": "000000" },
+      { "name": "rs" },
+      { "name": "rt" },
+      { "name": "rd" },
+      { "name": "shamt", "address": "00000" },
+      { "name": "funct", "address": "100000" }
+    ],
+    "operands": [
+      {
+        "name": "rd",
+        "type": "register"
+      },
+      {
+        "name": "rs",
+        "type": "register"
+      },
+      {
+        "name": "rt",
+        "type": "register"
+      }
+    ]
+  },
+  {
+    "name": "addi",
+    "format": "I",
+    "fields": [
+      { "name": "opcode", "address": "001000" },
+      { "name": "rs" },
+      { "name": "rt" },
+      { "name": "immediate" }
+    ],
+    "operands": [
+      {
+        "name": "rt",
+        "type": "register"
+      },
+      {
+        "name": "rs",
+        "type": "register"
+      },
+      {
+        "name": "immediate",
+        "type": "number",
+        "bit": 16,
+        "min": -32768,
+        "max": 32767
+      }
+    ]
+  },
+  {
+    "name": "sll",
+    "format": "R",
+    "fields": [
+      { "name": "opcode", "address": "000000" },
+      { "name": "rs", "address": "00000" },
+      { "name": "rt" },
+      { "name": "rd" },
+      { "name": "shamt" },
+      { "name": "funct", "address": "000000" }
+    ],
+    "operands": [
+      {
+        "name": "rd",
+        "type": "register"
+      },
+      {
+        "name": "rt",
+        "type": "register"
+      },
+      {
+        "name": "shamt",
+        "type": "number",
+        "bit": 5,
+        "min": 0,
+        "max": 31
+      }
+    ]
+  },
+  {
+    "name": "lw",
+    "format": "I",
+    "fields": [
+      { "name": "opcode", "address": "100011" },
+      { "name": "rs" },
+      { "name": "rt" },
+      { "name": "immediate" }
+    ],
+    "operands": [
+      {
+        "name": "rt",
+        "type": "register"
+      },
+      {
+        "type": "immediate-register",
+        "operands": [
+          {
+            "name": "immediate",
+            "type": "number",
+            "min": -32768,
+            "max": 32767
+          },
+          {
+            "name": "rs",
+            "type": "register"
+          }
+        ]
+      }
+    ]
+  }
+]
