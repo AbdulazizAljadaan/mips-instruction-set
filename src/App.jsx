@@ -2,16 +2,23 @@ import { Container } from '@mui/material'
 import React from 'react'
 import Format from './components/Format'
 import SelectInstruction from './components/SelectInstruction'
-import useInstruction from './helpers/useInstruction'
+import useInstruction, { INSTRUCTION_ACTIONS } from './helpers/useInstruction'
 
 function App() {
-  const [instructionData, setInstructionData] = useInstruction()
+  const [instructionData, dispatch] = useInstruction()
 
   return (
     <Container>
       <div className="space-y-5">
         <h1 className="text-2xl text-center">Core Instruction Set</h1>
-        <SelectInstruction setInstruction={name => setInstructionData(name)} />
+        <SelectInstruction
+          setInstruction={name =>
+            dispatch({
+              type: INSTRUCTION_ACTIONS.FIND_INSTRUCTION,
+              payload: { name },
+            })
+          }
+        />
         {instructionData && <Format {...instructionData} />}
       </div>
     </Container>
