@@ -1,17 +1,18 @@
 import { Box } from '@mui/material'
 import TextField from '@mui/material/TextField'
 import { useEffect, useState } from 'react'
-import baseConverter from '../../helpers/baseConverter'
+import intToAny from '../../helpers/intToAny'
 import useErrorMessage from '../../helpers/useErrorMessage'
 
-function NumberInput({ min, max, bit, setOperand }) {
+function NumberInput({ min, max, bit, isSigned, setOperand }) {
   const [value, setValue] = useState(0)
   const [message, hideErrorMessage, showErrorMessage] = useErrorMessage([
     'operand is out of range',
   ])
 
   useEffect(() => {
-    setOperand(baseConverter(value, 10, 2, bit))
+    setOperand(intToAny(value, 2, { length: bit, signed: isSigned }))
+    // eslint-disable-next-line
   }, [])
 
   function handleChange(event) {
@@ -24,7 +25,7 @@ function NumberInput({ min, max, bit, setOperand }) {
 
     if (value >= min && value <= max) {
       setValue(value)
-      setOperand(baseConverter(value, 10, 2, bit))
+      setOperand(intToAny(value, 2, { length: bit, signed: isSigned }))
     }
   }
 
