@@ -24,7 +24,7 @@ function Operand({ type, name, min, max, operands, bit, signed, setOperand }) {
         setOperand={setOperand}
         min={operands[0].min}
         max={operands[0].max}
-        isSigned={signed}
+        isSigned={operands[0].signed}
       />
     )
   }
