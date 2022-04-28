@@ -26,6 +26,11 @@ function SelectRegister({ setOperand }) {
           id="register-select"
           value={value}
           onChange={handleChange}
+          sx={{
+            '#register-select': {
+              color: '#FB3D3E',
+            },
+          }}
         >
           {registers.map(register => (
             <MenuItem key={register.number} value={register.address}>

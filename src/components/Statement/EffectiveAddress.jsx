@@ -4,7 +4,7 @@ import SelectRegister from './SelectRegister'
 
 function EffectiveAddress({ setOperand, min, max, isSigned }) {
   return (
-    <div className="flex items-center">
+    <div className="flex items-start gap-x-1">
       <NumberInput
         setOperand={address =>
           setOperand({
@@ -17,16 +17,18 @@ function EffectiveAddress({ setOperand, min, max, isSigned }) {
         max={max}
         isSigned={isSigned}
       />
-      (
-      <SelectRegister
-        setOperand={address =>
-          setOperand({
-            address,
-            name: 'rs',
-          })
-        }
-      />
-      )
+      <div className="flex items-center">
+        <span className="text-2xl">(</span>
+        <SelectRegister
+          setOperand={address =>
+            setOperand({
+              address,
+              name: 'rs',
+            })
+          }
+        />
+        <span className="text-2xl">)</span>
+      </div>
     </div>
   )
 }

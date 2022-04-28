@@ -12,9 +12,9 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function Field({ label, value }) {
   return (
-    <Grid item xs={1} sm="auto">
-      <div>{label}</div>
-      <Item>{value || '?'}</Item>
+    <Grid item flexGrow={1}>
+      <div className="text-center">{label}</div>
+      <Item>{value}</Item>
     </Grid>
   )
 }

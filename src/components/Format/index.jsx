@@ -1,15 +1,14 @@
 import { Box, Grid } from '@mui/material'
 import Field from './Field'
 
-function Format({ format, name, fields }) {
+function Format({ format, fields }) {
   return (
-    <div className="text-center">
-      <div>
-        <h2 className="text-2xl">{name} Instruction</h2>
-        <h3 className="text-lg">{format} - Format</h3>
-      </div>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1} columns={{ xs: 1, sm: 12 }}>
+    <div>
+      <h3 className="text-lg text-center">
+        <span className="font-bold">{format}</span> - Format
+      </h3>
+      <Box>
+        <Grid container spacing={{ xs: 0.5, sm: 1 }}>
           {fields.map(field => (
             <Field key={field.name} label={field.name} value={field.address} />
           ))}

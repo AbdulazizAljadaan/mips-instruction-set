@@ -1,4 +1,3 @@
-import { Container } from '@mui/material'
 import React from 'react'
 import Format from './components/Format'
 import SelectInstruction from './components/SelectInstruction'
@@ -9,9 +8,9 @@ function App() {
   const [instructionData, dispatch] = useInstruction()
 
   return (
-    <Container>
-      <div className="space-y-5">
-        <h1 className="text-2xl text-center">Core Instruction Set</h1>
+    <div className="px-2 py-4">
+      <div className="space-y-8">
+        <h1 className="text-2xl text-center">Core MIPS Instruction Set</h1>
         <SelectInstruction
           setInstruction={name =>
             dispatch({
@@ -35,7 +34,7 @@ function App() {
           </>
         )}
       </div>
-    </Container>
+    </div>
   )
 }
 
